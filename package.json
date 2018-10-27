@@ -5,15 +5,25 @@
     "proxy": "http://localhost:4141",
     "private": true,
     "watch": {
-        "hc:build": "dna-src/**/*",
-        "hc:dev": "build/**/*"
+        "hc:build": {
+          "patterns": ["dna-src/**/*"]
+        },
+        "hc:dev": {
+          "patterns": ["build/**/*"],
+          "delay": 1000
+        },
+        "hc:test": {
+          "patterns": ["build/**/*", "test/**/*"],
+          "delay": 1000
+        }
     },
     "scripts": {
         "hc:build": "del build/dna && tsc -p dna-src && cpx \"dna-src/**/*.json\" build/dna",
         "hc:build-watch": "npm-watch hc:build",
         "hc:dev": "(cd build && hcdev web)",
         "hc:dev-watch": "npm-watch hc:dev",
-        "hc:test": "npm run hc:build && cp -r ./test/ ./build/ && cd build && hcdev test",
+        "hc:test": "del build/test && (cp -r ./test/ ./build/ && cd build && hcdev test) || true",
+        "hc:test-watch": "npm-watch hc:test",
         "ui:build-watch": "(cd ui-src && ng build --watch --output-path ../build/ui)",
         "build": "npm run hc:build && npm run ui:build"
     },
