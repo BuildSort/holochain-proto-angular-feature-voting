@@ -26,9 +26,9 @@ interface GetResponse {
   Sources?: Hash[];
 }
 
-interface GetLinksResponse {
+interface GetLinksResponse<T> {
   Hash: Hash;
-  Entry?: any;
+  Entry?: T;
   EntryType?: string;
   Tag?: string;
   Source?: Hash;

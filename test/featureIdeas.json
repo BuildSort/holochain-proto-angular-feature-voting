@@ -10,6 +10,22 @@
         "creator": "%agent%"
       },
       "Output": "%h1%"
+    },{
+      "Convey": "Create another feature idea",
+      "Zome": "featureIdeas",
+      "FnName": "featureIdeaCreate",
+      "Input": {
+        "title": "World's 2nd Greatest Feature!!",
+        "description": "It should do everything else",
+        "creator": "%agent%"
+      },
+      "Output": "%h1%"
+    },{
+      "Convey": "List all these fabulous feature ideas",
+      "Zome": "featureIdeas",
+      "FnName": "featureIdeaList",
+      "Input": {},
+      "Output": [{"Entry":{"column":"Feature Ideas","creator":"QmdyYQ3brgLNqY7JCif3PhMfT1UshQ6Dk8Ro1rgd3fFs8Q","description":"It should do everything else","title":"World's 2nd Greatest Feature!!"},"EntryType":"featureIdea","Hash":"QmXNHh5peWRePz7QeuFnKAxpTDMubmkd65svrtkDzNHx5i","Source":"QmbQSRNY4D7mWptttTv25H318DDCZWNB2mHnxGYawbBZWJ"},{"Entry":{"column":"Feature Ideas","creator":"QmdyYQ3brgLNqY7JCif3PhMfT1UshQ6Dk8Ro1rgd3fFs8Q","description":"It should do everything","title":"World's Greatest Feature!!"},"EntryType":"featureIdea","Hash":"QmcSQtCKn5tj5SNrxPvkwRXjWYaotKKtahkkRGrBCXnS27","Source":"QmbQSRNY4D7mWptttTv25H318DDCZWNB2mHnxGYawbBZWJ"}]
     }
   ]
 }

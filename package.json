@@ -6,7 +6,7 @@
     "private": true,
     "watch": {
         "hc:build": {
-          "patterns": ["dna-src/**/*"]
+          "patterns": ["dna-src/**/*", "dna-src/*"]
         },
         "hc:dev": {
           "patterns": ["build/**/*"],

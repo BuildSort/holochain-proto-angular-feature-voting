@@ -37,7 +37,7 @@
           "Exposure": "public"
         },
         {
-          "Name": "featureList",
+          "Name": "featureIdeaList",
           "CallingType": "json",
           "Exposure": "public"
         }

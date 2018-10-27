@@ -12,7 +12,7 @@ declare function sign(doc: string): string;
 declare function verifySignature(signature: string, data: string, pubKey: string): boolean;
 declare function commit(entryType: string, entryData: string | object): Hash;
 declare function get(hash: Hash, options?: object): GetResponse | any;
-declare function getLinks(base: Hash, tag: string, options?: object): GetLinksResponse[];
+declare function getLinks<T>(base: Hash, tag: string, options?: object): GetLinksResponse<T>[];
 declare function update(entryType: string, entryData: string | object, replaces: Hash) : Hash;  
 declare function updateAgent(options: object): Hash;
 declare function remove(entryHash: Hash, message: string): Hash;

@@ -20,8 +20,8 @@ function featureIdeaCreate (entry: FeatureIdea) {
   return hash;
 }
 
-function sampleEntryList (sampleEntryHash) {
-  return getLinks(App.Key.Hash, "text", {Load: true}).map(e => e.Entry);
+function featureIdeaList () {
+  return getLinks<FeatureIdea>(App.Key.Hash, 'feature', {Load: true});
 }
 
 
