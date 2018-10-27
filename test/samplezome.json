@@ -1,11 +1,11 @@
 {
   "Tests": [
     {
-      "Convey": "test for sampleEntryCreate",
-      "Zome": "sampleZome",
-      "FnName": "sampleEntryCreate",
+      "Convey": "Create a feature idea",
+      "Zome": "featureIdeas",
+      "FnName": "featureIdeaCreate",
       "Input": {
-        "text": "hello"
+        "text": "World's Greatest Feature!!"
       },
       "Output": "%h1%"
     }

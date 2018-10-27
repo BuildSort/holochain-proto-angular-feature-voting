@@ -8,11 +8,11 @@
 //  Exposed functions with custom logic https://developer.holochain.org/API_reference
 // -----------------------------------------------------------------
 
-function sampleEntryCreate (entry) {
-  const hash = commit("sampleEntry", entry);
-  commit("sampleLink", {
+function featureIdeaCreate (entry) {
+  const hash = commit("featureIdea", entry);
+  commit("featureIdeaLink", {
     Links: [
-      {Base: App.Key.Hash, Link: hash, Tag: 'text'}
+      {Base: App.Key.Hash, Link: hash, Tag: 'feature'}
     ]
   });
   return hash;

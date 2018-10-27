@@ -1,0 +1,56 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "title",
+    "description",
+    "creator",
+    "column"
+  ],
+  "properties": {
+    "title": {
+      "$id": "#/properties/title",
+      "type": "string",
+      "title": "The title of the feature idea",
+      "default": "",
+      "examples": [
+        "Combined Build & Watch Command for Holochain dev"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "description": {
+      "$id": "#/properties/description",
+      "type": "string",
+      "title": "A description of the feature idea",
+      "default": "",
+      "examples": [
+        "hcdoeverything --myproject. It will do everything to build and watch... so I don't have to"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "creator": {
+      "$id": "#/properties/creator",
+      "type": "string",
+      "title": "A description of the feature idea",
+      "default": "",
+      "examples": [
+        "hcdoeverything --myproject. It will do everything to build and watch... so I don't have to"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "column": {
+      "$id": "#/properties/column",
+      "type": "string",
+      "title": "The column of the board this feature belongs to",
+      "default": "",
+      "examples": [
+        "hcdoeverything --myproject. It will do everything to build and watch... so I don't have to"
+      ],
+      "pattern": "^(.*)$"
+    }
+
+  }
+}

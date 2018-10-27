@@ -12,32 +12,32 @@
   },
   "Zomes": [
     {
-      "Name": "sampleZome",
-      "Description": "A sample zome",
+      "Name": "featureIdeas",
+      "Description": "User feature ideas for our awesome app",
       "RibosomeType": "js",
-      "CodeFile": "sampleZome.js",
+      "CodeFile": "featureIdeas.js",
       "Entries": [
         {
-          "Name": "sampleEntry",
+          "Name": "featureIdea",
           "Required": true,
           "DataFormat": "json",
           "Sharing": "public",
-          "SchemaFile": "sampleEntry.json"
+          "SchemaFile": "featureIdea.json"
         },
         {
-          "Name": "sampleLink",
+          "Name": "featureIdeaLink",
           "DataFormat": "links",
           "Sharing": "public"
         }
       ],
       "Functions": [
         {
-          "Name": "sampleEntryCreate",
+          "Name": "featureIdeaCreate",
           "CallingType": "json",
           "Exposure": "public"
         },
         {
-          "Name": "sampleEntryList",
+          "Name": "featureList",
           "CallingType": "json",
           "Exposure": "public"
         }
