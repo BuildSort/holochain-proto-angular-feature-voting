@@ -8,7 +8,9 @@
 //  Exposed functions with custom logic https://developer.holochain.org/API_reference
 // -----------------------------------------------------------------
 
-function featureIdeaCreate (entry) {
+function featureIdeaCreate (entry: FeatureIdea) {
+  entry.column = "Feature Ideas";
+
   const hash = commit("featureIdea", entry);
   commit("featureIdeaLink", {
     Links: [

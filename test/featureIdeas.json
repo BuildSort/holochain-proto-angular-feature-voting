@@ -5,7 +5,9 @@
       "Zome": "featureIdeas",
       "FnName": "featureIdeaCreate",
       "Input": {
-        "text": "World's Greatest Feature!!"
+        "title": "World's Greatest Feature!!",
+        "description": "It should do everything",
+        "creator": "%agent%"
       },
       "Output": "%h1%"
     }

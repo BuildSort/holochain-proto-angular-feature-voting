@@ -19,9 +19,6 @@
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": false
   },
-  "files": [
-    "./holochain.d.ts"
-  ],
   "include": [
     "ui-src/src/**/*"
   ],

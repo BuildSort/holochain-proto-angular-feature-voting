@@ -34,10 +34,10 @@
     "creator": {
       "$id": "#/properties/creator",
       "type": "string",
-      "title": "A description of the feature idea",
+      "title": "The hash of the agent that created the request",
       "default": "",
       "examples": [
-        "hcdoeverything --myproject. It will do everything to build and watch... so I don't have to"
+        "adf1f2f21fd2fadf1dfadf1df1qadqa1fd23"
       ],
       "pattern": "^(.*)$"
     },
@@ -47,7 +47,7 @@
       "title": "The column of the board this feature belongs to",
       "default": "",
       "examples": [
-        "hcdoeverything --myproject. It will do everything to build and watch... so I don't have to"
+        "Feature Ideas"
       ],
       "pattern": "^(.*)$"
     }
