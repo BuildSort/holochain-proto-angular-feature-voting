@@ -1,3 +1,5 @@
+import { FeatureIdea } from "../../@types/devcamp-feature-ideas";
+
 'use strict';
 
 // -----------------------------------------------------------------
