@@ -12,7 +12,7 @@ export class FeatureIdeaService {
   }
 
   featureIdeaCreate(featureIdea: FeatureIdea) {
-    return this.http.post('/api/fn/featureIdeas/featureIdeaCreate', featureIdea).subscribe((result) => {
+    return this.http.post('/fn/featureIdeas/featureIdeaCreate', featureIdea).subscribe((result) => {
 
     }, error => {
       console.log('error');
@@ -20,6 +20,6 @@ export class FeatureIdeaService {
   }
 
   featureIdeaList(): Observable<any> {
-    return this.http.get('/api/fn/featureIdeas/featureIdeaList');
+    return this.http.get('/fn/featureIdeas/featureIdeaList');
   }
 }
