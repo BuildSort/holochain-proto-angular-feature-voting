@@ -6,8 +6,7 @@
       "FnName": "featureIdeaCreate",
       "Input": {
         "title": "World's Greatest Feature!!",
-        "description": "It should do everything",
-        "creator": "%agent%"
+        "description": "It should do everything"
       },
       "Output": "%h1%"
     },{
@@ -16,8 +15,7 @@
       "FnName": "featureIdeaCreate",
       "Input": {
         "title": "World's 2nd Greatest Feature!!",
-        "description": "It should do everything else",
-        "creator": "%agent%"
+        "description": "It should do everything else"
       },
       "Output": "%h1%"
     },{

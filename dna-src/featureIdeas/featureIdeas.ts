@@ -1,5 +1,3 @@
-import { FeatureIdea } from "../../@types/devcamp-feature-ideas";
-
 'use strict';
 
 // -----------------------------------------------------------------
@@ -12,6 +10,7 @@ import { FeatureIdea } from "../../@types/devcamp-feature-ideas";
 
 function featureIdeaCreate (entry: FeatureIdea) {
   entry.column = "Feature Ideas";
+  entry.creator = App.Agent.Hash;
 
   const hash = commit("featureIdea", entry);
   commit("featureIdeaLink", {
@@ -22,7 +21,7 @@ function featureIdeaCreate (entry: FeatureIdea) {
   return hash;
 }
 
-function featureIdeaList () {
+function featureIdeaList(): GetLinksResponse<FeatureIdea>[] {
   return getLinks<FeatureIdea>(App.Key.Hash, 'feature', {Load: true});
 }
 
