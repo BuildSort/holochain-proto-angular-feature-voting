@@ -12,12 +12,14 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-  @ViewChild('featureIdeaModalTemplate') public featureIdeaModalTemplate: TemplateRef<any>;
+  @ViewChild('featureIdeaModalTemplate') featureIdeaModalTemplate: TemplateRef<any>;
+  //@ViewChild('featureIdeaModalNameField') 
   modalRef: BsModalRef;
   featureIdeas: Observable<GetLinksResponse<FeatureIdea>[]>;
   featureIdeasFiltered: Observable<GetLinksResponse<FeatureIdea>[]>[] = [];
   columns: FeatureIdeaColumn[] = ['Feature Ideas', 'Under Consideration', 'Scoping', 'In Development', 'Completed'];
   manualRefresh = new Subject();
+  modalFeatureIdea: FeatureIdea;
   
   featureIdeaTrackBy(index: number, item: GetLinksResponse<FeatureIdea>) {
     return item.Hash;
@@ -43,18 +45,14 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   openFeatureIdeaModal(featureIdea?: FeatureIdea) {
-    // TODO: set the current feature being edited/ or blank if created
+    this.modalFeatureIdea = featureIdea || <any> {};
     this.modalRef = this.modalService.show(this.featureIdeaModalTemplate);
   }
 
-  createFeatureIdea(featureName: string) {
-    const featureIdea: FeatureIdea = {
-      title: featureName,
-      description: 'TODO'
-    };
-
-    this.featureIdeaService.featureIdeaCreate(featureIdea);
+  createFeatureIdeaModal() {
+    this.featureIdeaService.featureIdeaCreate(this.modalFeatureIdea);
     this.manualRefresh.next();
+    this.modalRef.hide();
   }
 
   ngOnDestroy() {

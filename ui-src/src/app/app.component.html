@@ -1,9 +1,6 @@
-<input #featureIdeaNameField class="form-field" placeholder="New Feature Idea">
-<button class="btn btn-primary" (click)="createFeatureIdea(featureIdeaNameField.value)">Create</button>
-
-<h1>Feature Ideas</h1>
 <div class="feature-idea-column" *ngFor="let column of columns">
-
+    <h2>{{column}}</h2>
+    <button class="btn btn-primary" *ngIf="column === 'Feature Ideas'" (click)="openFeatureIdeaModal()">New Feature Idea</button>
     <div class="feature-idea-card" *ngFor="let featureIdea of featureIdeasFiltered[column] | async; trackBy: featureIdeaTrackBy">{{featureIdea.Entry.title}}</div>
 </div>
 
@@ -11,12 +8,13 @@
 
 <ng-template #featureIdeaModalTemplate>
     <div class="modal-header">
-        <h4 class="modal-title pull-left">Feature Idea</h4>
+        <input class="h4 featureIdeaTitle" #featureIdeaNameField [(ngModel)]="modalFeatureIdea.title" placeholder="New Feature Idea">
         <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
         <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div class="modal-body">
-        This is a modal.
+        <textarea [(ngModel)]="modalFeatureIdea.description"></textarea>
+        <button class="btn btn-primary" (click)="createFeatureIdeaModal();">Create</button>
     </div>
 </ng-template>
