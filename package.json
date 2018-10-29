@@ -32,9 +32,11 @@
         "hc:dev-watch": "npm-watch hc:dev",
         "hc:test": "del build/test && (cp -r ./test/ ./build/ && cd build && hcdev test) || true",
         "hc:test-watch": "npm-watch hc:test",
+        "ui:build": "(cd ui-src && ng build --output-path ../build/ui)",
         "ui:build-watch": "(cd ui-src && ng build --watch --output-path ../build/ui)",
         "ui:serve": "(cd ui-src && ng serve --proxy-config proxy.conf.json)",
-        "build": "npm run hc:build && npm run ui:build"
+        "build": "npm run hc:build && npm run ui:build",
+        "multi-start": "./spawn_multi_hcdev.sh"
     },
     "author": "",
     "license": "GPL",
