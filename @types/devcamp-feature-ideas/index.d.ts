@@ -1,6 +1,8 @@
+declare type FeatureIdeaColumn = 'Feature Ideas' | 'Under Consideration' | 'Scoping' | 'In Development' | 'Completed';
+
 declare interface FeatureIdea {
     title: string;
     description: string;
     creator?: string;
-    column?: string;
+    column?: FeatureIdeaColumn;
 }

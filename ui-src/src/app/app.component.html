@@ -2,6 +2,21 @@
 <button class="btn btn-primary" (click)="createFeatureIdea(featureIdeaNameField.value)">Create</button>
 
 <h1>Feature Ideas</h1>
-<ul>
-    <li *ngFor="let featureIdea of featureIdeas | async; trackBy: featureIdeaTrackBy">{{featureIdea | json}}</li>
-</ul>
+<div class="feature-idea-column" *ngFor="let column of columns">
+
+    <div class="feature-idea-card" *ngFor="let featureIdea of featureIdeasFiltered[column] | async; trackBy: featureIdeaTrackBy">{{featureIdea.Entry.title}}</div>
+</div>
+
+
+
+<ng-template #featureIdeaModalTemplate>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Feature Idea</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        This is a modal.
+    </div>
+</ng-template>

@@ -19,7 +19,7 @@ export class FeatureIdeaService {
     });
   }
 
-  featureIdeaList(): Observable<any> {
-    return this.http.get('/fn/featureIdeas/featureIdeaList');
+  featureIdeaList(): Observable<GetLinksResponse<FeatureIdea>[]> {
+    return <Observable<GetLinksResponse<FeatureIdea>[]>> this.http.get('/fn/featureIdeas/featureIdeaList');
   }
 }
