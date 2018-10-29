@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild, TemplateRef, ElementRef, ContentChild } from '@angular/core';
 import { FeatureIdeaService } from './feature-idea.service';
-import { Observable, timer, Subject } from 'rxjs';
+import { Observable, timer, Subject, onErrorResumeNext } from 'rxjs';
 import { switchMap, map, shareReplay, merge, throttleTime, delay, tap } from 'rxjs/operators';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
@@ -20,6 +20,7 @@ export class AppComponent implements OnInit, OnDestroy {
   manualRefresh = new Subject();
   modalFeatureIdea: FeatureIdea;
   voteClick = new Subject<MouseEvent>();
+  modalFeatureIdeaEntry: GetLinksResponse<FeatureIdea>;
   
   featureIdeaTrackBy(index: number, item: GetLinksResponse<FeatureIdea>) {
     return item.Hash;
@@ -32,9 +33,10 @@ export class AppComponent implements OnInit, OnDestroy {
         const icon = (<HTMLElement>(<HTMLElement>e.target).firstChild);
         icon.classList.add('bounce');
         setTimeout(() => icon.classList.remove('bounce'), 1000);
-      }),
-//      switchMap TODO: Post the vote
-    ).subscribe();// TODO: Then refresh
+      })
+    ).subscribe(() => {
+      this.doVoteForFeature(this.modalFeatureIdeaEntry.Hash);
+    });
   }
 
   ngOnInit() {
@@ -52,8 +54,9 @@ export class AppComponent implements OnInit, OnDestroy {
     });
   }
 
-  openFeatureIdeaModal(featureIdea?: FeatureIdea) {
-    this.modalFeatureIdea = featureIdea || <any> {};
+  openFeatureIdeaModal(featureIdea?: GetLinksResponse<FeatureIdea>) {
+    this.modalFeatureIdeaEntry = featureIdea || <any> {};
+    this.modalFeatureIdea = (featureIdea && featureIdea.Entry) || <any> {};
     this.modalRef = this.modalService.show(this.featureIdeaModalTemplate);
   }
 
@@ -61,6 +64,14 @@ export class AppComponent implements OnInit, OnDestroy {
     this.featureIdeaService.featureIdeaCreate(this.modalFeatureIdea);
     setTimeout(() => this.manualRefresh.next(), 200);
     this.modalRef.hide();
+  }
+
+  doVoteForFeature(featureHash: string): any {
+    /*.voteForFeature(featureHash).subscribe(result => {
+      setTimeout(() => this.manualRefresh.next(), 200);
+    }, error => {
+      console.log('error');
+    });*/
   }
 
 
