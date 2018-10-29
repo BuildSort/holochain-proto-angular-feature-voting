@@ -4,7 +4,8 @@
         <button class="btn btn-primary d-block w-100" *ngIf="column === 'Feature Ideas'" (click)="openFeatureIdeaModal()">+ New Feature Idea</button>
         <div class="feature-idea-card" *ngFor="let featureIdea of featureIdeasFiltered[column] | async; trackBy: featureIdeaTrackBy"
             (click)="openFeatureIdeaModal(featureIdea)">
-            {{featureIdea.Entry.title}}
+            <div class="feature-idea-card-title">{{featureIdea.Entry.title}}</div>
+            <div class="feature-idea-card-votes text-muted align-right">Votes: {{featureIdeaService.state.votesForFeatureIdeas[featureIdea.Hash]?.length}}</div>
         </div>
     </div>
 </div>
@@ -26,8 +27,8 @@
                 <svg class="vote-button-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="white" d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
                 &nbsp;Vote
             </button>
-            <span class="my-votes-on-feature">+1</span>
-            <span class="total-votes-on-feature">Votes: 254</span>
+            <span *ngIf="featureIdeaService.state.myVotesForFeatureIdeas[modalFeatureIdeaEntry.Hash].length" class="my-votes-on-feature">+{{featureIdeaService.state.myVotesForFeatureIdeas[modalFeatureIdeaEntry.Hash].length}}</span>
+            <span class="total-votes-on-feature">Votes: {{featureIdeaService.state.votesForFeatureIdeas[modalFeatureIdeaEntry.Hash].length}}</span>
         </div>
     </div>
 </ng-template>

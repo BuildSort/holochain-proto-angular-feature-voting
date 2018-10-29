@@ -12,15 +12,47 @@ export class FeatureIdeaService {
   public votes: Observable<GetLinksResponse<Voting>[]>;
   manualRefresh = new Subject();
 
+  state: {
+    featureIdeas: GetLinksResponse<FeatureIdea>[];
+    votes: GetLinksResponse<Voting>[];
+    myHash: string;
+    votesForFeatureIdeas: {
+      [featureIdeaHash: string]: GetLinksResponse<Voting>[]
+    };
+    myVotes: {
+      [voteHash: string]: GetLinksResponse<Voting>[]
+    };
+    myFeatureIdeas: {
+      [featureIdeaHash: string]: GetLinksResponse<FeatureIdea>
+    };
+    myVotesForFeatureIdeas: {
+      [featureIdeaHash: string]: GetLinksResponse<Voting>[]
+    };
+
+  } = <any>{};
+
   constructor(private http: HttpClient) {
+
+    this.rebuildState();
     
+    this.http.get('/fn/featureIdeas/myHash').subscribe((result) => {
+      this.state.myHash = result+'';
+      console.log("Agent Hash: " + this.state.myHash);
+    }, error => {
+      console.log(error);
+    });
+
+
     this.featureIdeas = timer(0,5000).pipe(
       merge(this.manualRefresh),
       switchMap(() => this.featureIdeaList()),
       shareReplay()
     );
 
-    this.featureIdeas.subscribe(); // keep it alive
+    this.featureIdeas.subscribe(results => {
+      this.state.featureIdeas = results;
+      this.rebuildState();
+    });
 
     this.votes = timer(0,5000).pipe(
       merge(this.manualRefresh),
@@ -28,9 +60,40 @@ export class FeatureIdeaService {
       shareReplay()
     );
 
-    this.votes.subscribe(); // keep it alive
+    this.votes.subscribe(results => {
+      this.state.votes = results;
+      this.rebuildState();
+    });
 
+  }
 
+  rebuildState() {
+    this.state.votesForFeatureIdeas = {};
+    this.state.myFeatureIdeas = {};
+    this.state.myVotesForFeatureIdeas = {};
+
+    if (this.state.votes && this.state.featureIdeas && this.state.myHash) {
+      
+      this.state.featureIdeas.forEach(f => {
+
+        this.state.votesForFeatureIdeas[f.Hash] = [];
+        this.state.myVotesForFeatureIdeas[f.Hash] = [];
+
+        if (f.Entry.creator === this.state.myHash) {
+          this.state.myFeatureIdeas[f.Hash] = f;
+        }
+
+      });
+
+      this.state.votes.forEach(vote => {
+        this.state.votesForFeatureIdeas[vote.Entry.feature].push(vote);
+
+        if (vote.Entry.voter === this.state.myHash) {
+          this.state.myVotesForFeatureIdeas[vote.Entry.feature].push(vote);
+        }
+
+      });
+    }
   }
 
   refresh() {

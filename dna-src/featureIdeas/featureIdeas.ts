@@ -25,6 +25,10 @@ function featureIdeaList(): GetLinksResponse<FeatureIdea>[] {
   return getLinks<FeatureIdea>(App.Key.Hash, 'feature', {Load: true});
 }
 
+function myHash(): string {
+  return App.Agent.Hash;
+}
+
 
 // -----------------------------------------------------------------
 //  The Genesis Function https://developer.holochain.org/genesis

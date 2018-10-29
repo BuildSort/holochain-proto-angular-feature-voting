@@ -37,6 +37,11 @@
                 "Name": "featureIdeaList",
                 "CallingType": "json",
                 "Exposure": "public"
+            },
+            {
+                "Name": "myHash",
+                "CallingType": "json",
+                "Exposure": "public"
             }
         ]
     }, {

@@ -24,7 +24,7 @@ export class AppComponent implements OnInit, OnDestroy {
     return item.Hash;
   }
 
-  constructor(private featureIdeaService: FeatureIdeaService, private modalService: BsModalService) {
+  constructor(public featureIdeaService: FeatureIdeaService, private modalService: BsModalService) {
     this.voteClick.asObservable().pipe(
       throttleTime(1000),
       tap((e) => {
