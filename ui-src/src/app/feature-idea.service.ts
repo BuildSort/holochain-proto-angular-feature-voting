@@ -1,18 +1,45 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, timer, Subject } from 'rxjs';
+import { switchMap, shareReplay, merge } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FeatureIdeaService {
 
-  constructor(private http: HttpClient) {
+  public featureIdeas: Observable<GetLinksResponse<FeatureIdea>[]>;
+  public votes: Observable<GetLinksResponse<Voting>[]>;
+  manualRefresh = new Subject();
 
+  constructor(private http: HttpClient) {
+    
+    this.featureIdeas = timer(0,5000).pipe(
+      merge(this.manualRefresh),
+      switchMap(() => this.featureIdeaList()),
+      shareReplay()
+    );
+
+    this.featureIdeas.subscribe(); // keep it alive
+
+    this.votes = timer(0,5000).pipe(
+      merge(this.manualRefresh),
+      switchMap(() => this.votingList()),
+      shareReplay()
+    );
+
+    this.votes.subscribe(); // keep it alive
+
+
+  }
+
+  refresh() {
+    setTimeout(() => this.manualRefresh.next(), 100);
   }
 
   featureIdeaCreate(featureIdea: FeatureIdea) {
     return this.http.post('/fn/featureIdeas/featureIdeaCreate', featureIdea).subscribe((result) => {
+      this.refresh();
     }, error => {
       console.log(error);
     });
@@ -24,6 +51,7 @@ export class FeatureIdeaService {
 
   votingCreate(voting: Voting) {
     return this.http.post('/fn/voting/votingCreate', voting).subscribe((result) => {
+      this.refresh();
     }, error => {
       console.log(error);
     });

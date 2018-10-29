@@ -14,10 +14,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   @ViewChild('featureIdeaModalTemplate') featureIdeaModalTemplate: TemplateRef<any>;
   modalRef: BsModalRef;
-  featureIdeas: Observable<GetLinksResponse<FeatureIdea>[]>;
   featureIdeasFiltered: Observable<GetLinksResponse<FeatureIdea>[]>[] = [];
   columns: FeatureIdeaColumn[] = ['Feature Ideas', 'Under Consideration', 'Scoping', 'In Development', 'Completed'];
-  manualRefresh = new Subject();
   modalFeatureIdea: FeatureIdea;
   voteClick = new Subject<MouseEvent>();
   modalFeatureIdeaEntry: GetLinksResponse<FeatureIdea>;
@@ -37,20 +35,14 @@ export class AppComponent implements OnInit, OnDestroy {
         }
       })
     ).subscribe(() => {
-      this.doVoteForFeature(this.modalFeatureIdeaEntry.Hash);
+      this.featureIdeaService.votingCreate({feature: this.modalFeatureIdeaEntry.Hash});
     });
   }
 
   ngOnInit() {
-    this.featureIdeas = timer(0,5000).pipe(
-      merge(this.manualRefresh),
-      switchMap(() => this.featureIdeaService.featureIdeaList()),
-      shareReplay()
-    );
-
     // TODO: Seems like there should be a better way to assign them to columns rather than filter the same list over and over?
     this.columns.forEach((column) => {
-      this.featureIdeasFiltered[column] = this.featureIdeas.pipe(
+      this.featureIdeasFiltered[column] = this.featureIdeaService.featureIdeas.pipe(
         map(results => results.filter(result => result.Entry.column === column))
       )
     });
@@ -64,18 +56,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   createFeatureIdeaModal() {
     this.featureIdeaService.featureIdeaCreate(this.modalFeatureIdea);
-    setTimeout(() => this.manualRefresh.next(), 200);
     this.modalRef.hide();
   }
-
-  doVoteForFeature(featureHash: string): any {
-    /*.voteForFeature(featureHash).subscribe(result => {
-      setTimeout(() => this.manualRefresh.next(), 200);
-    }, error => {
-      console.log('error');
-    });*/
-  }
-
 
   ngOnDestroy() {
   }
