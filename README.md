@@ -1,4 +1,4 @@
-# Typescript + React + Redux + holochain-proto Template
+# A Kanban Feature request hApp for Holochain
 
 Use this template to quickly get up and running with a Typescript build system with hot reloading.
 
@@ -70,13 +70,12 @@ npm run test
 
 * [Holochain](https://github.com/holochain/holochain-proto)
 * [Typescript](https://github.com/Microsoft/TypeScript)
-* [React](https://reactjs.org/)
-* [Redux](https://redux.js.org/)
+* [Angular](https://angular.io/)
 
 ## Authors
 
-* **Willem Olding** - [willemolding](https://github.com/willemolding)
-* **Michael Dougherty** - [maackle](https://github.com/maackle)
+* **Ryan How** - [RyanHow](https://github.com/ryanhowg)
+* **Peter Pons** - [ponspeter](https://github.com/ponspeter)
 
 ## License
 
