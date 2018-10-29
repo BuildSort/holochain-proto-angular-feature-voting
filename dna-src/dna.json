@@ -24,6 +24,7 @@
             },
             {
                 "Name": "featureIdeaLink",
+                "Required": true,
                 "DataFormat": "links",
                 "Sharing": "public"
             }
@@ -58,6 +59,7 @@
             },
             {
                 "Name": "votingLink",
+                "Required": true,
                 "DataFormat": "links",
                 "Sharing": "public"
             }

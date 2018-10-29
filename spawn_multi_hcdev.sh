@@ -4,9 +4,9 @@
 cd build
 
 bs --port 4040 &
-hcdev --execpath holo-identities/.identity3 --bootstrapServer 127.0.0.1:4040 --DHTport 4043 web 4143 &
-hcdev --execpath holo-identities/.identity2 --bootstrapServer 127.0.0.1:4040 --DHTport 4042 web 4142 &
-hcdev --execpath holo-identities/.identity1 --bootstrapServer 127.0.0.1:4040 --DHTport 4041 web 4141 &
+HCLOG_DHT_ENABLE=1 hcdev --execpath holo-identities/.identity3 --bootstrapServer 127.0.0.1:4040 --agentID bob@local --DHTport 4043 web 4143 &
+HCLOG_DHT_ENABLE=1 hcdev --execpath holo-identities/.identity2 --bootstrapServer 127.0.0.1:4040 --agentID jane@local --DHTport 4042 web 4142 &
+HCLOG_DHT_ENABLE=1 hcdev --execpath holo-identities/.identity1 --bootstrapServer 127.0.0.1:4040 --agentID john@local --DHTport 4041 web 4141 &
 
 read -n 1 -s -r -p "Press any key to cancel"
 
@@ -31,6 +31,7 @@ case "$(uname -s)" in
     ;;
 esac
 
+rm -rf holo-identities
 
 cd ..
 
