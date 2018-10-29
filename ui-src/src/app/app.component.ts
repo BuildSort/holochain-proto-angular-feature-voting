@@ -30,9 +30,11 @@ export class AppComponent implements OnInit, OnDestroy {
     this.voteClick.asObservable().pipe(
       throttleTime(1000),
       tap((e) => {
-        const icon = (<HTMLElement>(<HTMLElement>e.target).firstChild);
-        icon.classList.add('bounce');
-        setTimeout(() => icon.classList.remove('bounce'), 1000);
+        const icon = (<HTMLElement>(<HTMLElement>e.target).querySelector('.vote-button-icon'));
+        if (icon) {
+          icon.classList.add('bounce');
+          setTimeout(() => icon.classList.remove('bounce'), 1000);
+        }
       })
     ).subscribe(() => {
       this.doVoteForFeature(this.modalFeatureIdeaEntry.Hash);
