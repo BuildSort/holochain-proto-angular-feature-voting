@@ -11,6 +11,7 @@ let module = {}
 
 function votingCreate (entry: Voting) {
   entry.time = new Date().toString();
+  entry.voter = App.Agent.Hash;
 
   const hash = commit("voting", entry);
   commit("votingLink", {

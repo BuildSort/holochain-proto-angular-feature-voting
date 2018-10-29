@@ -8,7 +8,7 @@ declare interface FeatureIdea {
 }
 
 declare interface Voting{
-    voter: string;
+    voter?: string;
     feature : string;
-    time : string;
+    time?: string;
 }
