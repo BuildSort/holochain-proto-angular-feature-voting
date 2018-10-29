@@ -64,4 +64,5 @@
 
 .vote-button-icon {
     filter: drop-shadow( 1px 1px 0 var(--primary));
+    pointer-events: none;
 }
