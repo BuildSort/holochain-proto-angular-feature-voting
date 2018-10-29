@@ -78,7 +78,7 @@ npm run test
 
 ## Authors
 
-* **Ryan How** - [RyanHow](https://github.com/ryanhowg)
+* **Ryan How** - [RyanHow](https://github.com/RyanHow)
 * **Peter Pons** - [ponspeter](https://github.com/ponspeter)
 
 ## License
