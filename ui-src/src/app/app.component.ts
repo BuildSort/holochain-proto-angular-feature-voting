@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, TemplateRef, ElementRef, ContentChild } from '@angular/core';
 import { FeatureIdeaService } from './feature-idea.service';
 import { Observable, timer, Subject } from 'rxjs';
 import { switchMap, map, shareReplay, merge } from 'rxjs/operators';
@@ -13,7 +13,6 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 export class AppComponent implements OnInit, OnDestroy {
 
   @ViewChild('featureIdeaModalTemplate') featureIdeaModalTemplate: TemplateRef<any>;
-  //@ViewChild('featureIdeaModalNameField') 
   modalRef: BsModalRef;
   featureIdeas: Observable<GetLinksResponse<FeatureIdea>[]>;
   featureIdeasFiltered: Observable<GetLinksResponse<FeatureIdea>[]>[] = [];
