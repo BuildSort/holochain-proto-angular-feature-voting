@@ -2,6 +2,7 @@
     border: none;
     outline: none !important;
     width: 100%;
+    line-height: 1;
 }
 
 @keyframes bounce {
@@ -33,6 +34,8 @@
     background-color: #dddddd;
     margin: 0.5rem;
     flex: 1 1 0;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
 }
 
 .columns-container {
@@ -42,5 +45,19 @@
 
 .feature-idea-column-heading {
     text-align: center;
-    margin: 0.5rem 0;
+    margin-bottom: 0.5rem;
+}
+
+.feature-idea-card {
+    border-radius: 0.125rem;
+    background-color: white;
+    box-shadow: 1px 1px 2px rgba(127,127,127,0.5);
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.5s;
+}
+
+.feature-idea-card:hover {
+    background-color: #eee;
 }
