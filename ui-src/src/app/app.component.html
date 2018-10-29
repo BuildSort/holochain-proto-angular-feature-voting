@@ -1,12 +1,13 @@
-<div class="feature-idea-column" *ngFor="let column of columns">
-    <h2>{{column}}</h2>
-    <button class="btn btn-primary" *ngIf="column === 'Feature Ideas'" (click)="openFeatureIdeaModal()">New Feature Idea</button>
-    <div class="feature-idea-card" *ngFor="let featureIdea of featureIdeasFiltered[column] | async; trackBy: featureIdeaTrackBy"
-        (click)="openFeatureIdeaModal(featureIdea.Entry)">
-        {{featureIdea.Entry.title}}
+<div class="columns-container">
+    <div class="feature-idea-column" *ngFor="let column of columns">
+        <h2 class="h5 feature-idea-column-heading">{{column}}</h2>
+        <button class="btn btn-primary" *ngIf="column === 'Feature Ideas'" (click)="openFeatureIdeaModal()">New Feature Idea</button>
+        <div class="feature-idea-card" *ngFor="let featureIdea of featureIdeasFiltered[column] | async; trackBy: featureIdeaTrackBy"
+            (click)="openFeatureIdeaModal(featureIdea.Entry)">
+            {{featureIdea.Entry.title}}
+        </div>
     </div>
 </div>
-
 
 
 <ng-template #featureIdeaModalTemplate>

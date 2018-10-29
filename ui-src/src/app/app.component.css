@@ -28,3 +28,19 @@
 .total-votes-on-feature {
     margin-left: auto;
 }
+
+.feature-idea-column {
+    background-color: #dddddd;
+    margin: 0.5rem;
+    flex: 1 1 0;
+}
+
+.columns-container {
+    display: flex;
+    margin: 0.5rem;
+}
+
+.feature-idea-column-heading {
+    text-align: center;
+    margin: 0.5rem 0;
+}
