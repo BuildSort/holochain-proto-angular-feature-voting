@@ -1,6 +1,10 @@
 # A Kanban Feature request hApp for Holochain
 
-Use this template to quickly get up and running with a Typescript build system with hot reloading.
+A feature voting and tracking happ all built on a Kanban. 
+
+It can be used for your holochain happ. It will allows your users to suggest new features and vote on them. Users only get 5 votes, and they can only add upto a maximum of 3 votes per feature. It has been designed this way to see which are the most popular feature requests.
+
+TODO: The Kanban once permissions have been set up will allow the developers to move the cards along so the users can see the status of the feature requests.
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/holochain/hc-ts-template.svg)
 ![GitHub](https://img.shields.io/github/license/holochain/hc-ts-template.svg)
