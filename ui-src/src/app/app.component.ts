@@ -28,10 +28,13 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(private featureIdeaService: FeatureIdeaService, private modalService: BsModalService) {
     this.voteClick.asObservable().pipe(
       throttleTime(1000),
-      tap((e) => (<HTMLElement>(<HTMLElement>e.target).firstChild).classList.add('bounce')),
-      delay(1000),
-      tap((e) => (<HTMLElement>(<HTMLElement>e.target).firstChild).classList.remove('bounce'))
-    ).subscribe();
+      tap((e) => {
+        const icon = (<HTMLElement>(<HTMLElement>e.target).firstChild);
+        icon.classList.add('bounce');
+        setTimeout(() => icon.classList.remove('bounce'), 1000);
+      }),
+//      switchMap TODO: Post the vote
+    ).subscribe();// TODO: Then refresh
   }
 
   ngOnInit() {
