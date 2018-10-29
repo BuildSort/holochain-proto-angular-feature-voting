@@ -1,0 +1,38 @@
+{
+    "definitions": {},
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://example.com/root.json",
+    "type": "object",
+    "title": "The Root Schema",
+    "required": [
+        "voter",
+        "feature",
+        "time"
+    ],
+    "properties": {
+        "voter": {
+            "$id": "#/properties/voter",
+            "type": "string",
+            "title": "Name of voter",
+            "default": "",
+            "examples": [
+                "Combined Build & Watch Command for Holochain dev"
+            ],
+            "pattern": "^(.*)$"
+        },
+        "feature": {
+            "$id": "#/properties/feature",
+            "type": "string",
+            "title": "A description of the feature",
+            "default": "",
+            "examples": [
+                "hcdoeverything --myproject. It will do everything to build and watch... so I don't have to"
+            ],
+            "pattern": "^(.*)$"
+        },
+        "time": {
+            "$id": "#/properties/time",
+            "type": "string"
+        }
+    }
+}

@@ -6,3 +6,9 @@ declare interface FeatureIdea {
     creator?: string;
     column?: FeatureIdeaColumn;
 }
+
+declare interface Voting{
+    voter: string;
+    feature : string;
+    time : string;
+}
