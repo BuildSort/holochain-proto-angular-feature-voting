@@ -11,7 +11,7 @@
 
 <ng-template #featureIdeaModalTemplate>
     <div class="modal-header">
-        <input [readonly]="modalFeatureIdea.creator ? true : null" class="h4 featureIdeaTitle" #featureIdeaModalNameField [(ngModel)]="modalFeatureIdea.title" placeholder="New Feature Idea">
+        <input [readonly]="modalFeatureIdea.creator ? true : null" class="h4 featureIdeaTitle" #featureIdeaModalNameField [(ngModel)]="modalFeatureIdea.title" placeholder="Enter a short title for your idea">
         <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" (load)="featureIdeaModalNameField.focus()">
         <button type="button" class="close pull-right" aria-label="Close" tabindex="1" (click)="modalRef.hide()">
         <span aria-hidden="true">&times;</span>

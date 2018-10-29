@@ -1,6 +1,7 @@
 .featureIdeaTitle {
     border: none;
     outline: none !important;
+    width: 100%;
 }
 
 @keyframes bounce {
