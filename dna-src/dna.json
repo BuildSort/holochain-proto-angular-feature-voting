@@ -1,47 +1,72 @@
 {
-  "Version": 1,
-  "UUID": "4a4beb46-a3cf-476f-8593-e30155186707",
-  "Name": "sampleApp",
-  "Properties": {
-    "description": "A sample app",
-    "language": "en"
-  },
-  "PropertiesSchemaFile": "properties_schema.json",
-  "DHTConfig": {
-    "HashType": "sha2-256"
-  },
-  "Zomes": [
-    {
-      "Name": "featureIdeas",
-      "Description": "User feature ideas for our awesome app",
-      "RibosomeType": "js",
-      "CodeFile": "featureIdeas.js",
-      "Entries": [
-        {
-          "Name": "featureIdea",
-          "Required": true,
-          "DataFormat": "json",
-          "Sharing": "public",
-          "SchemaFile": "featureIdea.json"
-        },
-        {
-          "Name": "featureIdeaLink",
-          "DataFormat": "links",
-          "Sharing": "public"
-        }
-      ],
-      "Functions": [
-        {
-          "Name": "featureIdeaCreate",
-          "CallingType": "json",
-          "Exposure": "public"
-        },
-        {
-          "Name": "featureIdeaList",
-          "CallingType": "json",
-          "Exposure": "public"
-        }
-      ]
-    }
-  ]
+    "Version": 1,
+    "UUID": "4a4beb46-a3cf-476f-8593-e30155186707",
+    "Name": "sampleApp",
+    "Properties": {
+        "description": "A sample app",
+        "language": "en"
+    },
+    "PropertiesSchemaFile": "properties_schema.json",
+    "DHTConfig": {
+        "HashType": "sha2-256"
+    },
+    "Zomes": [{
+        "Name": "featureIdeas",
+        "Description": "User feature ideas for our awesome app",
+        "RibosomeType": "js",
+        "CodeFile": "featureIdeas.js",
+        "Entries": [{
+                "Name": "featureIdea",
+                "Required": true,
+                "DataFormat": "json",
+                "Sharing": "public",
+                "SchemaFile": "featureIdea.json"
+            },
+            {
+                "Name": "featureIdeaLink",
+                "DataFormat": "links",
+                "Sharing": "public"
+            }
+        ],
+        "Functions": [{
+                "Name": "featureIdeaCreate",
+                "CallingType": "json",
+                "Exposure": "public"
+            },
+            {
+                "Name": "featureIdeaList",
+                "CallingType": "json",
+                "Exposure": "public"
+            }
+        ]
+    }, {
+        "Name": "voting",
+        "Description": "voting application",
+        "RibosomeType": "js",
+        "CodeFile": "voting.js",
+        "Entries": [{
+                "Name": "voting",
+                "Required": true,
+                "DataFormat": "json",
+                "Sharing": "public",
+                "SchemaFile": "voting.json"
+            },
+            {
+                "Name": "votingLink",
+                "DataFormat": "links",
+                "Sharing": "public"
+            }
+        ],
+        "Functions": [{
+                "Name": "votingCreate",
+                "CallingType": "json",
+                "Exposure": "public"
+            },
+            {
+                "Name": "votingList",
+                "CallingType": "json",
+                "Exposure": "public"
+            }
+        ]
+    }]
 }
