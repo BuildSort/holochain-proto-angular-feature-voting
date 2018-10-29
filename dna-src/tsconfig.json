@@ -4,6 +4,7 @@
     "outDir": "../build/dna",
     "rootDir": ".",
     "typeRoots": ["../@types"],
-    "newLine" : "lf"
+    "newLine" : "lf",
+    "allowJs": true
   }
 }
