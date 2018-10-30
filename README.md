@@ -1,4 +1,5 @@
 # A Kanban Feature request hApp for Holochain
+![GitHub](https://img.shields.io/github/license/BuildSort/holochain-proto-angular-feature-voting.svg)
 
 A feature voting and tracking happ all built on a Kanban. 
 
@@ -6,7 +7,7 @@ It can be used for your holochain happ. It will allows your users to suggest new
 
 TODO: The Kanban once permissions have been set up will allow the developers to move the cards along so the users can see the status of the feature requests.
 
-![GitHub](https://img.shields.io/github/license/holochain/hc-ts-template.svg)
+![screenshot](screenshot.png)
 
 ## Getting Started
 
